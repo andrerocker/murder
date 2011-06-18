@@ -20,7 +20,7 @@ class Murder
     content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
     content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
     content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeee ww ee e er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
-     content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeeesssssssssssssssss e er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
+     content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeeesss se er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
     normal_line
     puts ""
   end
@@ -77,13 +77,15 @@ class Murder
     find_end = start+width
     
     if find_end < body.length
-      find_end -= 1 while body[find_end] != " " # find empty
-      find_end -= 1 while body[find_end] == " " # skip known empty
+      if body[find_end] != " " && body[find_end+1] != " "
+        find_end -= 1 while body[find_end] != " "
+        find_end -= 1 while body[find_end] == " "
+      end
     else
       find_end = body.length
     end
     
-    start += 1 while body[start] == " "
+    start += 1 while body[start] == " " # start line with a word
     
     {initial: start, next: find_end+1 ,final: find_end}
   end
