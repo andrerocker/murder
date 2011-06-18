@@ -19,7 +19,8 @@ class Murder
     content "Sou uma linha curta"
     content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
     content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
-    content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
+    content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeee ww ee e er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
+     content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeeesssssssssssssssss e er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
     normal_line
     puts ""
   end
@@ -60,22 +61,31 @@ class Murder
   end
   
   def generate_lines_by_width(body, width)
-    divmode = body.length.to_f.divmod(width)
-    lines = divmode[0]
-    lines += 1 if divmode[1] > 0
-    
-    index = 0
+    navigator = resolve(body, width, 0)
     result = []
-
-    lines.times {
-      inicial = index==0 && 0 || (index+1 * width)
-      final = inicial+width
-      
-      result << body[inicial..final]
-      index += 1
-    }
-
+    
+    while true
+      result << body[navigator[:initial]..navigator[:final]]
+      break if navigator[:final] == body.length
+      navigator = resolve(body, width, navigator[:next])
+    end
+    
     result
+  end
+  
+  def resolve(body, width, start)
+    find_end = start+width
+    
+    if find_end < body.length
+      find_end -= 1 while body[find_end] != " " # find empty
+      find_end -= 1 while body[find_end] == " " # skip known empty
+    else
+      find_end = body.length
+    end
+    
+    start += 1 while body[start] == " "
+    
+    {initial: start, next: find_end+1 ,final: find_end}
   end
 end
 
