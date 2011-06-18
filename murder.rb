@@ -18,6 +18,8 @@ class Murder
     empty_content
     content "Sou uma linha curta"
     content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
+    content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
+    content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
     normal_line
     puts ""
   end
@@ -38,12 +40,14 @@ class Murder
   end
 
   def content body
-    width_available = @width - (2 + 2)
+    width_available = @width - (2 + 3)
     
     if body.length<=width_available
       simple_content body
       return
     end
+    
+    generate_lines_by_width(body, width_available).each { |line| simple_content line }
   end
 
   def simple_content body
@@ -52,7 +56,26 @@ class Murder
   end
 
   def empty_content
-    content ""
+    simple_content ""
+  end
+  
+  def generate_lines_by_width(body, width)
+    divmode = body.length.to_f.divmod(width)
+    lines = divmode[0]
+    lines += 1 if divmode[1] > 0
+    
+    index = 0
+    result = []
+
+    lines.times {
+      inicial = index==0 && 0 || (index+1 * width)
+      final = inicial+width
+      
+      result << body[inicial..final]
+      index += 1
+    }
+
+    result
   end
 end
 
