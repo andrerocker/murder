@@ -16,11 +16,8 @@ class Murder
     content "Desenvolvedor de Software - Locaweb IDC"
     content "De 19/02/2001 a 20/08/2004"
     empty_content
-    content "Sou uma linha curta"
-    content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
-    content "Trabalhei de forma autonoma por muitos anos no Kernel do linux junto com Linus Torvalds e Andrew Mortom que no dia a dia sao meus queridos amigos"
-    content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeee ww ee e er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
-     content "a a a s d f g h h h hhh ff gggg gg gggg gf ffff fff fff ffff rr eeeeeesss se er rrr e r rrrr e rrrr r r ee rr rrrrr rr rrr"
+    content "Lorem Ipsum is simply dummy text of the printing and typesetting cascatinha1 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including."
+
     normal_line
     puts ""
   end
